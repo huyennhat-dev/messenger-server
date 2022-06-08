@@ -53,9 +53,10 @@ io.on('connection', (socket) => {
     });
 
     socket.on("send-msg", (data) => {
-        console.log(data)
+       
         const sendUserSocket = onlineUsers.get(data.data.users[0]);
         if (sendUserSocket) {
+             console.log(data)
             socket.broadcast.emit('message-receive', data.data)
 
             socket.broadcast.emit('message-notification', data)
